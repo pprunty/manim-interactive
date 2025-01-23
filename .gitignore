@@ -1,0 +1,57 @@
+# Python Bytecode
+*.pyc
+*.pyo
+*.pyd
+__pycache__/
+
+# Python Virtual Environments
+venv/
+env/
+ENV/
+.venv/
+.pyenv/
+
+# IntelliJ IDEA/JetBrains specific files
+.idea/
+*.iml
+*.iws
+.idea/
+
+# macOS system files
+.DS_Store
+
+# Windows system files
+Thumbs.db
+Desktop.ini
+
+# Log files
+*.log
+
+# Python coverage
+.coverage
+*.cover
+*.py,cover
+
+# Test report files
+nosetests.xml
+coverage.xml
+*.coveragerc
+
+# Unit test / coverage reports
+*.hypothesis/
+*.tox/
+.coverage.*
+
+# Build directories
+build/
+dist/
+*.egg-info/
+.eggs/
+
+# Local IDE configuration files
+.idea/
+.vscode/
+
+# Temporary files
+*.swp
+*~

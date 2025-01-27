@@ -142,22 +142,22 @@ sublime:
 	@echo "Copying custom commands to Sublime User directory..."
 	@cp -R $(SUBLIME_CUSTOM_DIR)/* "$(SUBLIME_USER_DIR)/"
 	@echo "Custom commands copied."
-	@echo "Adding keybindings for Manim custom commands..."
-	@if [ ! -f "$(SUBLIME_USER_DIR)/Default (OSX).sublime-keymap" ]; then \
-		echo "Creating new keybindings file..."; \
-		touch "$(SUBLIME_USER_DIR)/Default (OSX).sublime-keymap"; \
-	fi
-	@cat >> "$(SUBLIME_USER_DIR)/Default (OSX).sublime-keymap" <<- 'EOL'
-	[
-	    { "keys": ["shift+super+r"], "command": "manim_run_scene" },
-	    { "keys": ["super+r"], "command": "manim_checkpoint_paste" },
-	    { "keys": ["super+alt+r"], "command": "manim_recorded_checkpoint_paste" },
-	    { "keys": ["super+ctrl+r"], "command": "manim_skipped_checkpoint_paste" },
-	    { "keys": ["super+e"], "command": "manim_exit" },
-	    { "keys": ["super+option+/"], "command": "comment_fold"}
-	]
-	EOL
-	@echo "Keybindings added. Restart Sublime Text to apply the changes."
+#	@echo "Adding keybindings for Manim custom commands..."
+#	@if [ ! -f "$(SUBLIME_USER_DIR)/Default (OSX).sublime-keymap" ]; then \
+#		echo "Creating new keybindings file..."; \
+#		touch "$(SUBLIME_USER_DIR)/Default (OSX).sublime-keymap"; \
+#	fi
+#	@cat >> "$(SUBLIME_USER_DIR)/Default (OSX).sublime-keymap" <<- 'EOL'
+#	[
+#	    { "keys": ["shift+super+r"], "command": "manim_run_scene" },
+#	    { "keys": ["super+r"], "command": "manim_checkpoint_paste" },
+#	    { "keys": ["super+alt+r"], "command": "manim_recorded_checkpoint_paste" },
+#	    { "keys": ["super+ctrl+r"], "command": "manim_skipped_checkpoint_paste" },
+#	    { "keys": ["super+e"], "command": "manim_exit" },
+#	    { "keys": ["super+option+/"], "command": "comment_fold"}
+#	]
+#	EOL
+#	@echo "Keybindings added. Restart Sublime Text to apply the changes."
 
 
 short:

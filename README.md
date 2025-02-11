@@ -270,7 +270,7 @@ Now, when you open Sublime Text Editor, you can open a terminal using `cmd + 1`.
 
 Additionally, you can use the following Manim key bindings:
 
-* `cmd+shift+r` – Run the current scene by highlighting `def construct(self):` in that scene. This will run the scene interactively in an animation window.
+* `cmd+shift+r` – Run the current scene by highlighting `def construct(self):` constructor in that scene `class`. This will run the scene interactively in an animation window.
 * `cmd+r` – Run a block of code by highlighting the full block you wish to animate (including consistent indentation) and pressing these keys together. Ensure the block is part of the scene you are working on and that 
 it includes consistent indentation. The constructor block should not be included.
 * `cmd+e` – Exit the interactive animation.
@@ -291,8 +291,8 @@ By default, the mp4 file will be saved at:
 videos/projects/guide/text/TextScene.mp4
 ```
 
-> [!NOTE] This project currently supports macOS only.
-> Exports default to 4K. To change resolution, modify the --uhd flag in the Makefile and update custom_config.yml accordingly.
+> [!NOTE] 
+> Exports default to 4K 60fps. To change resolution, modify the --uhd or --fps flag in the Makefile and update custom_config.yml accordingly.
 
 ---
 

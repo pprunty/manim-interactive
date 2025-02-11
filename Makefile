@@ -3,17 +3,19 @@
 .PHONY: help install config upgrade interactive run export sublime short video
 
 # Variables
-MANIM_DIR=_manimlib
-PROJECTS_DIR=projects
-CURRENT_YEAR=$(shell date +%Y)
-CUSTOM_CONFIG=custom_config.yml
-MANIM_REPO=https://github.com/3b1b/manim.git
-OUTPUT_DIR=exports
-SUBLIME_USER_DIR=$(shell find ~/Library/Application\ Support/Sublime\ Text*/Packages/User -type d 2>/dev/null | head -n 1)
-SUBLIME_CUSTOM_DIR=sublime_custom_commands
+MANIM_DIR         = _manimlib
+PROJECTS_DIR      = projects
+CURRENT_YEAR      = $(shell date +%Y)
+CUSTOM_CONFIG     = custom_config.yml
+MANIM_REPO        = https://github.com/3b1b/manim.git
+OUTPUT_DIR        = exports
+SUBLIME_USER_DIR  = $(shell find ~/Library/Application\ Support/Sublime\ Text*/Packages/User -type d 2>/dev/null | head -n 1)
+SUBLIME_CUSTOM_DIR= sublime_custom_commands
 SUBLIME_DOWNLOAD_URL=https://www.sublimetext.com/download
-INTERACTIVE_CONFIG=custom_config.yml
+INTERACTIVE_CONFIG= custom_config.yml
 
+# Old base path stored as an environment variable:
+MANIM_OLD_BASE    = /Users/pprunty/GitHub/manim
 
 help:
 	@echo "Usage: make [target]"
@@ -24,11 +26,16 @@ help:
 	@echo "  config          Configure custom settings for Manim"
 	@echo "  upgrade         Upgrade the Manim library to the latest version"
 	@echo "  interactive     Run an interactive animation"
+	@echo "  run             Run an animation (make run f=<file> [s=<scene>])"
+	@echo "  export          Export an animation as a video (make export f=<file> s=<scene>)"
+	@echo "  sublime         Configure Sublime Text with custom Manim commands"
+	@echo "  short           Update resolution for short-form videos (2160x3840)"
+	@echo "  video           Update resolution for standard videos (3840x2160)"
 	@echo ""
 	@echo "Interactive Target Usage:"
 	@echo "  make interactive f=<file> [s=<scene>]"
-	@echo "    f=<file>      Path to the Python file containing the animation (default: projects/examples/guide.py)"
-	@echo "    s=<scene>     Optional: Name of the scene to render (default: None; allowing you to input which animation to play from the file)"
+	@echo "    f=<file>      Path to the Python file containing the animation"
+	@echo "    s=<scene>     Name of the scene to render"
 	@echo ""
 
 install:
@@ -44,12 +51,13 @@ install:
 	CURRENT_DIR=$(shell pwd)
 	PARENT_DIR=$(shell dirname $(CURRENT_DIR))
 	@sed -i.bak \
-	    -e "s|/Users/pprunty/GitHub/manim|$(CURRENT_DIR)|g" \
+	    -e "s|$(MANIM_OLD_BASE)|$(CURRENT_DIR)|g" \
 	    -e "s|/Users/pprunty/GitHub|$(PARENT_DIR)|g" \
 	    $(CUSTOM_CONFIG)
 	@echo "custom_config.yml updated with current paths:"
 	@echo "  Base Directory: $(CURRENT_DIR)"
 	@echo "  Parent Directory: $(PARENT_DIR)"
+	@cp custom_config.yml ~/custom_config.yml			
 	@cat $(CUSTOM_CONFIG)
 
 config:
@@ -114,7 +122,6 @@ interactive:
 	manimgl $$f $$s -f -p -se $$line_number;
 	@echo "Interactive animation executed. Press the space bar or right arrow key to play animation."
 
-
 export:
 	@echo "Exporting animation..."
 	@if [ -z "$(f)" ] || [ -z "$(s)" ]; then \
@@ -129,7 +136,6 @@ export:
 	manimgl $$f $$s -w;
 	@echo "Export completed to $$o."
 
-
 sublime:
 	@echo "Checking if Sublime Text is installed..."
 	@if [ -z "$(SUBLIME_USER_DIR)" ]; then \
@@ -137,7 +143,7 @@ sublime:
 		echo "Download it here: $(SUBLIME_DOWNLOAD_URL)"; \
 		exit 1; \
 	fi
-	@cp interactive_config.yml ~/custom_config.yml
+	@cp custom_config.yml ~/custom_config.yml
 	@echo "Sublime Text is installed. Sublime User directory: $(SUBLIME_USER_DIR)"
 	@echo "Copying custom commands to Sublime User directory..."
 	@cp -R $(SUBLIME_CUSTOM_DIR)/* "$(SUBLIME_USER_DIR)/"
@@ -159,12 +165,11 @@ sublime:
 #	EOL
 #	@echo "Keybindings added. Restart Sublime Text to apply the changes."
 
-
 short:
-	@echo "Updating resolution for short-form videos (1080x1920)..."
+	@echo "Updating resolution for short-form videos (2160x3840)..."
 	@if [ -f "$(INTERACTIVE_CONFIG)" ]; then \
-		sed -i.bak "s/resolution: (.*)/resolution: (1080, 1920)/" $(INTERACTIVE_CONFIG); \
-		echo "Resolution updated to 1080x1920 in $(INTERACTIVE_CONFIG)."; \
+		sed -i.bak "s/resolution: (.*)/resolution: (2160, 3840)/" $(INTERACTIVE_CONFIG); \
+		echo "Resolution updated to 2160x3840 in $(INTERACTIVE_CONFIG)."; \
 	else \
 		echo "Error: Configuration file $(INTERACTIVE_CONFIG) not found."; \
 		exit 1; \
@@ -183,4 +188,3 @@ video:
 	fi
 	@cp $(INTERACTIVE_CONFIG) ~/custom_config.yml
 	@echo "Copied updated configuration to ~/custom_config.yml"
-

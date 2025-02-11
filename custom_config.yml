@@ -1,10 +1,10 @@
 directories:
   mirror_module_path: True
-  removed_mirror_prefix: "/Users/pprunty/GitHub/manim"
-  base: "/Users/pprunty/GitHub/manim"
+  removed_mirror_prefix: "/Users/pprunty/Desktop/software.v2/manim-interactive"
+  base: "/Users/pprunty/Desktop/software.v2/manim-interactive"
   subdirs:
-    raster_images: "/Users/pprunty/GitHub/manim/media/images/"
-    vector_images: "/Users/pprunty/GitHub/manim/media/vectors/"
+    raster_images: "/Users/pprunty/Desktop/software.v2/manim-interactive/media/images/"
+    vector_images: "/Users/pprunty/Desktop/software.v2/manim-interactive/media/vectors/"
     pi_creature_images: "images/pi_creature/svg"
     downloads: "manim_downloads"
     # Use the default value for the rest
@@ -14,9 +14,9 @@ window:
   monitor_index: 0
   full_screen: True  # Enable full-screen mode by default
 camera:
-  resolution: (1080, 1920)
-  background_color: "#1C1D1C"
-  fps: 60
+  resolution: (2160, 3840)
+  background_color: "#0C1207" # 1A1D15, 1B1D18 original=1C1D1C alt =1A1D15 , between = 1B1D18 between again = 1C1D1A  / more green alternative, new alt = 0C1207 or 1A1D15
+  fps: 60 # This should be 60 fps for exports (hardcoded in Makefile)
   background_opacity: 1.0
 file_writer:
   saturation: 1.5

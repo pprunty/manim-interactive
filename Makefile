@@ -95,10 +95,10 @@ run:
 		echo "Command: manimgl $$f"; \
 		manimgl $$f -f; \
 	else \
-		echo "Command: manimgl $$f $$s -f"; \
-		manimgl $$f $$s -f; \
+		echo "Command: manimgl $$f $$s"; \
+		manimgl $$f $$s; \
 	fi
-	@echo "Animation executed. Press the space bar or right arrow key to play animation."
+	@echo "Animation executed."
 
 interactive:
 	@echo "Running interactive animation..."

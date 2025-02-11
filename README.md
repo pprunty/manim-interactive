@@ -17,7 +17,9 @@ Manim Interactive is an enhanced interactive development environment built on to
     - [Step 3: Verify Installation](#step-3-verify-installation)
 - [Using the Makefile](#using-the-makefile)
 - [Running Animations](#running-animations)
+  - [Keyboard Controls](#keyboard-controls)
 - [Interactive Animations with Sublime Text Editor](#interactive-animations-with-sublime-text-editor)
+  - [Using Manim Key Bindings](#using-manim-key-bindings)
 - [Exporting Animations](#exporting-animations)
 - [Resolution Shortcuts](#resolution-shortcuts)
 - [Upgrading Manim](#upgrading-manim)
@@ -29,7 +31,8 @@ Manim Interactive is an enhanced interactive development environment built on to
 ---
 
 ## Overview
-Manim Interactive is designed to make it easier to create animations using Manim. With an interactive setup, a simple Makefile, and integration with Sublime Text, you can rapidly prototype and render mathematical animations in high quality.
+Manim Interactive is designed to make it easier to create animations using Manim; the animation software developed by 
+Grant Sanderson for his YouTube channel [3blue1brown](https://www.youtube.com/channel/UCYO_jab_esuFRV4b17AJtAw). With an interactive setup, a simple Makefile, and integration with Sublime Text, you can rapidly prototype and render mathematical animations in high quality.
 
 By the end of this guide, you’ll know how to:
 - Create and run animations interactively.
@@ -59,6 +62,9 @@ Before proceeding, ensure you have:
 4. [Rectangle](#) (optional, for window management)
 5. A [MacBook](#) (required for macOS support)
 
+---
+
+## Installation
 
 ## Step 1
 
@@ -90,6 +96,8 @@ Confirm the `manimgl` command is available:
 ```bash
 manimgl --help
 ```
+
+---
 
 # Using the Makefile
 
@@ -128,6 +136,14 @@ Common targets include:
 * `run` – Run an animation.
 * `interactive` – Launch an interactive animation session.
 * `export` – Export an animation to a video file.
+* `short/video` – Switch between short-form and long-form video resolutions.
+
+> **Note:** The `make-interactive` command is used to run animations interactively in an animation window. Wherein you can 
+copy and paste code into your terminal to run that animation interactively. However, this
+command and workflow will later be replaced by a keyboard shortcut in Sublime Text Editor.
+---
+
+---
 
 # Running Animations
 
@@ -175,14 +191,22 @@ Listed:
 * `projects/guides/grouping.py`
 * `projects/guides/3d.py`
 
-Showcase isolated animations that can be used and referenced when creating complex
+showcase isolated animations that can be used and referenced when creating complex
 animations later.
 
-For example, to run animations from `image.py`:
+For example, to run animations from `image.py`. Run:
 
 ```bash
 make run f=projects/guide/image.py s=MovingImageScene
 ```
+
+To instead, interactively select the scene to run, use:
+
+```bash
+make run f=projects/guide/image.py
+``` 
+
+and proceed to select the scene you wish to run.
 
 ## Keyboard Controls:
 
@@ -194,6 +218,8 @@ to interact with the animation:
 * Hold d and move: Adjust the 3D perspective.
 * Press r: Reset scroll position.
 * Press ⌘ + q: Quit the window.
+
+---
 
 # Running Interactive Animations with Sublime Text Editor
 
@@ -231,6 +257,8 @@ make sublime
 ```
 6. Restart Sublime Text to finalize the setup.
 
+## Using Manim Key Bindings:
+
 Now, when you open Sublime Text Editor, you can open a terminal using `cmd + 1`.
 
 Additionally, you can use the following Manim key bindings:
@@ -239,6 +267,8 @@ Additionally, you can use the following Manim key bindings:
 * `cmd+r` – Run a block of code by highlighting the full block you wish to animate (including consistent indentation) and pressing these keys together. Ensure the block is part of the scene you are working on and that 
 it includes consistent indentation. The constructor block should not be included.
 * `cmd+e` – Exit the interactive animation.
+
+---
 
 # Exporting Animations
 
@@ -256,6 +286,8 @@ videos/projects/guide/text/TextScene.mp4
 
 > **Note:** This project currently supports macOS only.
 Exports default to 4K. To change resolution, modify the --uhd flag in the Makefile and update custom_config.yml accordingly.
+---
+
 ---
 
 # Resolution Shortcuts
@@ -277,6 +309,8 @@ make video
 > **Warning:** Running these commands also copies the `custom_config.yml` from `projects/guides` to the project root. This file is used by Manim key bindings in Sublime Text Editor for interactive workflows.
 ---
 
+---
+
 # Upgrading Manim
 
 Manim Interactive uses a static version of the `3b1b/manim` repository, namely (#). Upgrading may affect existing projects. To upgrade:
@@ -291,12 +325,16 @@ This command:
 2. Replace the current library, at `_manimlib`.
 3. Re-installs the upgraded library.
 
+---
+
 # Hacking the Manim Library
 
 For advanced users:
 
 * Refer to additional documentation on modifying Manim’s internals.
 * Be cautious—changes here may break your animations.
+
+---
 
 # Troubleshooting
 
@@ -307,9 +345,13 @@ If you encounter issues:
 * Consult the FAQ or search online for common issues.
 * Check the project’s GitHub issues page for similar problems.
 
+---
+
 # Contributing
 
 Contributions are welcome! Please contact me directly for guidelines on reporting bugs, submitting pull requests, and adhering to our code style.
+
+---
 
 # License
 

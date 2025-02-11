@@ -143,8 +143,6 @@ copy and paste code into your terminal to run that animation interactively. Howe
 command and workflow will later be replaced by a keyboard shortcut in Sublime Text Editor.
 ---
 
----
-
 # Running Animations
 
 Manim uses a `custom_config.yml` file for configuration. The project structure includes:
@@ -292,9 +290,6 @@ Exports default to 4K. To change resolution, modify the --uhd flag in the Makefi
 
 # Resolution Shortcuts
 
-Nowadays, videos are made in vertical and horizontal resolution for long-form 4K (3840,2160) and short-form (2160, 3840) content. If you
-want to make a short video, start by running:
-
 Switch between video resolutions using:
 
 * Short Video (Vertical short-form 4K (2160,3840))
@@ -307,7 +302,12 @@ make video
 ```
 
 > **Warning:** Running these commands also copies the `custom_config.yml` from `projects/guides` to the project root. This file is used by Manim key bindings in Sublime Text Editor for interactive workflows.
----
+
+After running these commands, you can export animations in the new resolution by running:
+
+```bash
+make export f=<path_to_file> s=<SceneName>
+``` 
 
 ---
 

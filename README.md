@@ -56,7 +56,8 @@ Manim is a powerful Python library originally designed for mathematical animatio
 - **Flexibility:** Full control over animation elements with Python.
 - **Open-Source Freedom:** Modify and extend the code to fit your needs.
 
-> [!NOTE]   This project currently supports macOS only.
+> [!NOTE] 
+> This project currently supports macOS only.
 
 ---
 
@@ -144,7 +145,8 @@ Common targets include:
 * `export` – Export an animation to a video file.
 * `short/video` – Switch between short-form and long-form video resolutions.
 
-> [!NOTE] The `make-interactive` command is used to run animations interactively in an animation window. Wherein you can
+> [!NOTE] 
+> The `make-interactive` command is used to run animations interactively in an animation window. Wherein you can
 > copy and paste code into your terminal to run that animation interactively. However, this
 > command and workflow will later be replaced by a keyboard shortcut in Sublime Text Editor.
 
@@ -307,7 +309,8 @@ make short
 make video
 ```
 
-> [!WARNING]   Running these commands also copies the `custom_config.yml` from `projects/guides` to the project root. This file is used by Manim key bindings in Sublime Text Editor for interactive workflows.
+> [!WARNING] 
+> Running these commands also copies the `custom_config.yml` from `projects/guides` to the project root. This file is used by Manim key bindings in Sublime Text Editor for interactive workflows.
 
 After running these commands, you can export animations in the new resolution by running:
 
@@ -319,11 +322,14 @@ make export f=<path_to_file> s=<SceneName>
 
 # Upgrading Manim
 
-Manim Interactive uses a static version of the `3b1b/manim` repository, namely (#). Upgrading may affect existing projects. To upgrade:
+Manim Interactive uses a static version of the `3b1b/manim` repository, namely (#). To upgrade:
 
 ```bash
 make upgrade
 ```
+
+> [!CAUTION]
+> Upgrading may affect existing projects. Please use with caution.
 
 This command:
 
@@ -339,6 +345,9 @@ For advanced users:
 
 * Refer to additional documentation on modifying Manim’s internals.
 * Be cautious—changes here may break your animations.
+
+> [!CAUTION]
+> Hacking the `_manimlib` may affect existing projects. Please hack with caution.
 
 ---
 

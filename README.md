@@ -10,7 +10,7 @@ no complete tutorial. This is why I created the `manim-interactive` project, to 
 By the end of this guide, you'll be able to:
 
 1. **Create animations like this**:
-   <MP4
+   <video
    src="/videos/sample-video.mp4"
    controls
    autoplay
@@ -19,7 +19,7 @@ By the end of this guide, you'll be able to:
    className="rounded-md shadow-lg"
    />
 2. **Using an interactive animation development environment like this**:
-   <MP4
+   <video
    src="/videos/sample-video.mp4"
    controls
    autoplay
@@ -28,7 +28,7 @@ By the end of this guide, you'll be able to:
    className="rounded-md shadow-lg"
    />
 
-# Why Manim [#why-manim]
+# Why Manim
 
 As a math and computer science enthusiast with a passion for educational content, Manim aligns perfectly with this year's [goal
 of creating content](/blog/2024-in-review#new-year-resolution) for my educational YouTube channel, [Pixel Projects](). While it was designed for
@@ -38,7 +38,7 @@ mathematical animations, Manim offers:
 * Flexibility to create custom animations using Python.
 * Open-source freedom to explore and contribute.
 
-# Pre-requisites [#pre-requisites]
+# Pre-Requisites
 
 Before proceeding, ensure you have the following tools installed:
 
@@ -48,9 +48,9 @@ Before proceeding, ensure you have the following tools installed:
 4. [Rectangle]() (optional, for window management)
 5. [MacBook]() (currently, the project is only supported on macOS)
 
-# Installation [#installation]
+# Installation
 
-## Step 1 [#step-1]
+## Step 1
 
 Start by cloning the [manim-interactive](https://github.com/pprunty/manim-interactive) repository:
 
@@ -58,7 +58,7 @@ Start by cloning the [manim-interactive](https://github.com/pprunty/manim-intera
 git clone https://github.com/pprunty/manim-interactive.git
 ```
 
-## Step 2 [#step-2]
+## Step 2
 
 The repository includes a `Makefile` that simplifies the setup process. To install the required dependencies and Manim itself, run:
 
@@ -73,7 +73,7 @@ This will:
 3. Install `setuptools` using `pip` (manimgl breaks if not installed).
 3. Update the `custom_config.yml` with paths on your local machine.
 
-## Step 3 [#step-3]
+## Step 3
 
 Once installed, confirm that the manimgl command is available by running:
 
@@ -81,7 +81,7 @@ Once installed, confirm that the manimgl command is available by running:
 manimgl --help
 ```
 
-# Using the Makefile [#using-the-makefile]
+# Using the Makefile
 
 The Makefile includes several commands to streamline your workflow and is a wrapper around the `manimgl` cli.
 To see a list of available commands, run:
@@ -101,14 +101,19 @@ Targets:
   config          Configure custom settings for Manim
   upgrade         Upgrade the Manim library to the latest version
   interactive     Run an interactive animation
+  run             Run an animation (make run f=<file> [s=<scene>])
+  export          Export an animation as a video (make export f=<file> s=<scene>)
+  sublime         Configure Sublime Text with custom Manim commands
+  short           Update resolution for short-form videos (2160x3840)
+  video           Update resolution for standard videos (3840x2160)
 
 Interactive Target Usage:
   make interactive f=<file> [s=<scene>]
-    f=<file>      Path to the Python file containing the animation (default: projects/examples/guide.py)
-    s=<scene>     Optional: Name of the scene to render (default: None; allowing you to input which animation to play from the file)
+    f=<file>      Path to the Python file containing the animation
+    s=<scene>     Name of the scene to render
 ```
 
-# Running Animations [#running-animations]
+# Running Animations
 
 Manim uses a `custom_config.yml` file to manage its configuration.
 You can customize rendering options, such as resolution, output paths,
@@ -140,7 +145,7 @@ ran `make install`. Here's a breakdown of the paths used:
 
 ```
 
-## Running a Standard Animation [#running-standard-animations]
+## Running a Standard Animation
 
 To render an animation, use the animations provided in `projects/guides/*.py`. They are
 listed:
@@ -177,7 +182,7 @@ To choose dynamically which scene you would like to run from the `text.py` file,
 make run f=projects/guide/text.py
 ```
 
-And follow the output on your terminal for selecting which screen in the file to run.
+And follow the output on your terminal for selecting which scene in the file to run.
 
 To run animations from `image.py`:
 
@@ -185,28 +190,12 @@ To run animations from `image.py`:
 make run f=projects/guide/image.py s=MovingImageScene
 ```
 
-# Exporting Animations [#exporting-animations]
-
-Export animations to a specified directory with high 4k resolution:
-
-```bash
-make export f=projects/guide/text.py s=TextScene
-```
-
-By default the mp4 file will be saved as `videos/projects/guide/text/TextScene.mp4`.
-
-<Admonition type="info" title="Note">
-By default exports are saved in 4K resolution. I do not see a reason why you would want to export
-in lower quality, but if so you can remove the `--uhd` flag from the `Makefile` on the `make export`
-command and update the resolution in the `custom_config.yml`.
-</Admonition>
-
-# Sublime Integration [#sublime-integration]
+# Running Interactive Animations with Sublime Text Editor
 
 Sublime Text Editor is used to create keyboard shortcuts that interact with Manim's animation
 scenes.
 
-## Adding Terminus [#adding terminus]
+## Adding Terminus
 
 To get started using Sublime, open the cloned `manim-interactive` project using the sublime text editor. Now hold cmd + shift + p to open command pallette, search
 for install package and select that, then search "Terminus". This will install Terminus on your system.
@@ -215,7 +204,7 @@ Now, restart Sublime Text Editor, type cmd + shift + p again and search "Terminu
 
 In the **Preferences: Terminus Key Bindings**, paste the following on the right hand side:
 
-## Key Bindings [#key-bindings]
+## Key Bindings
 
 ```json
 [
@@ -239,7 +228,7 @@ In the **Preferences: Terminus Key Bindings**, paste the following on the right 
 ```
 
 Before we use these key bindings, we need to copy the content inside
-`sublime_custom_commands/*` into the Sublime application. To do this, you can run:
+`sublime_custom_commands/*` in the `mainim-interactive` project into the Sublime application. To do this, you can run:
 
 ```bash
 make sublime
@@ -255,10 +244,25 @@ Additionally, we have added Manim key bindings which enable:
   keys together to run that part of your animation in the animation window.
 * cmd+e: Press these keys to exit the interactive animation.
 
+# Exporting Animations
 
-# Resolution Shortcuts [#resolution-shortcuts]
+Export animations to a specified directory with high 4k resolution:
 
-Nowadays, videos are made in vertical and horizontal resolution for long 4K (3840,2160) and short form (1080,1920) content. If you
+```bash
+make export f=projects/guide/text.py s=TextScene
+```
+
+By default, the mp4 file will be saved as `videos/projects/guide/text/TextScene.mp4`.
+
+<Admonition type="info" title="Note">
+By default exports are saved in 4K resolution. I do not see a reason why you would want to export
+in lower quality, but if so you can remove the `--uhd` flag from the `Makefile` on the `make export`
+command and update the resolution in the `custom_config.yml`.
+</Admonition>
+
+# Resolution Shortcuts
+
+Nowadays, videos are made in vertical and horizontal resolution for long-form 4K (3840,2160) and short-form (2160, 3840) content. If you
 want to make a short video, start by running:
 
 ```bash
@@ -267,7 +271,7 @@ make short
 
 This will update the resolution in the `custom_config.yml` dynamically. You can then run a scene like before
 using the `make run` command and using
-this updated configuration see your animation in short-form resolution.
+this updated configuration to see your animation in short-form resolution.
 
 Likewise, to switch back to standard 4K video resolution, run:
 
@@ -275,7 +279,12 @@ Likewise, to switch back to standard 4K video resolution, run:
 make video
 ```
 
-# Upgrading Manim [#upgrading-manim]
+<Admonition type="warning" title="warning">
+Note, running this command also copies the `custom_config.yml` file from the `projects/guides` directory to the root of the project.
+Which is used by Manim key bindings in Sublime Text Editor for interactive workflows.
+</Admonition>
+
+# Upgrading Manim
 
 <Admonition type="warning" title="warning">
 `manim-interactive` uses a static version of the `3b1b/manim` repository. If you are currently working on an existing project,
@@ -294,6 +303,6 @@ This command:
 
 1. Clones the latest version of the Manim repository.
 2. Replaces the current library files with the updated ones.
-3. Reinstalls the upgraded library.
+3. Re-installs the upgraded library.
 
-# Hacking the Manim Library [#hacking-manim-library]
+# Hacking the Manim Library

@@ -24,7 +24,7 @@ Manim Interactive is an enhanced interactive development environment built on to
 - [Using the Makefile](#using-the-makefile)
 - [Running Animations](#running-animations)
   - [Keyboard Controls](#keyboard-controls)
-- [Interactive Animations with Sublime Text Editor](#interactive-animations-with-sublime-text-editor)
+- [Running Interactive Animations with Sublime Text Editor](#running-interactive-animations-with-sublime-text-editor)
   - [Using Manim Key Bindings](#using-manim-key-bindings)
 - [Exporting Animations](#exporting-animations)
 - [Resolution Shortcuts](#resolution-shortcuts)

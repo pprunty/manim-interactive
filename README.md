@@ -329,7 +329,7 @@ make upgrade
 ```
 
 > [!CAUTION]
-> Upgrading may affect existing projects. Please use with caution.
+> Upgrading may effect existing projects. Please use with caution.
 
 This command:
 
@@ -347,7 +347,7 @@ For advanced users:
 * Be cautious—changes here may break your animations.
 
 > [!CAUTION]
-> Hacking the `_manimlib` may affect existing projects. Please hack with caution.
+> Hacking the `_manimlib` may effect existing projects. Please hack with caution.
 
 ---
 

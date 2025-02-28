@@ -11,6 +11,10 @@ Manim Interactive is an enhanced interactive development environment built on to
 > please contact me via [X](https://twitter.com/pprunty_) or [E-mail](mailto:patrickprunty.business@gmail.com).
  
 
+
+https://github.com/user-attachments/assets/c2d94ea1-0252-4344-bc1c-98fc9aab24cc
+
+
 ---
 
 ## Table of Contents

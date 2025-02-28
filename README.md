@@ -12,7 +12,9 @@ Manim Interactive is an enhanced interactive development environment built on to
  
 
 
-https://github.com/user-attachments/assets/c2d94ea1-0252-4344-bc1c-98fc9aab24cc
+
+https://github.com/user-attachments/assets/b5b6ae7f-8412-4660-bcaa-9e88a33b19b6
+
 
 
 ---
